@@ -133,6 +133,7 @@ def SHA2(string, base):
     html = urlopen("http://md5decrypt.net/Api/api.php?hash="+string+"&hash_type=sha256&email=deanna_abshire@proxymail.eu&code=1152464b80a61728")
     string = html.read()
     string = ensure_str(string)
+    print('Decoded to SHA2 as %s' % string)
     if len(string) > 0:
         if string in decoded:
             Quit()
@@ -152,6 +153,8 @@ def SHA1(string, base):
     if match:
         string = match.group().split('hervorheb2>')[1][:-18]
         string = ensure_str(string)
+        print('Decoded to SHA1 as %s' % string)
+
         if string in decoded:
             Quit()
         print(g + ' Cracked SHA1 : %s' % string)
@@ -166,6 +169,9 @@ def MD5(string, base):
     url = "http://www.nitrxgen.net/md5db/" + string
     string = urlopen(url).read()
     string = ensure_str(string)
+    
+    print('Decoded MD5 as %s' % string)
+
     if len(string) > 0:
         if string in decoded:
             Quit()
@@ -187,6 +193,10 @@ def fromchar(string, base):
             decoded.append(i)
         string = ''.join(decoded)
         string = ensure_str(string)
+        
+        print('Decoded fromChar as %s' % string)
+
+        
         if string in decoded:
             Quit()
         print(g + ' Decoded from FromChar : %s' % (string))
@@ -198,6 +208,9 @@ def fromchar(string, base):
 def urle(string, base):
     string = unquote(string)
     string = ensure_str(string)
+    
+    print('Decoded urle as %s' % string)
+
     if string in decoded:
         Quit()
     print(g + ' Decoded from URL encoding : %s' % (string))
@@ -216,6 +229,8 @@ def hexenc(string, base):
     		quit()
     string = ensure_str(string)
 
+    print('Decoded hexenc as %s' % string)
+
     if string in decoded:
         Quit()
     print(g + ' Decoded from Hex : %s' % (string))
@@ -227,6 +242,9 @@ def hexenc(string, base):
 def base64(string, base):
     string = b64decode(string)
     string = ensure_str(string)
+
+    print('Decoded base64 as %s' % string)
+    
     if string in decoded:
         Quit()
     print(g + ' Decoded from Base64 : %s' % (string))
@@ -244,6 +262,9 @@ def bin_to_ascii(string, base):
     n = int(string, 2)
     string = int_to_bytes(n).decode()
     string = ensure_str(string)
+    
+    print('Decoded bin_to_ascii as %s' % string)
+    
     if string in decoded:
         Quit()
     print(g + ' Decoded from Binary : %s' % (string))
@@ -267,6 +288,9 @@ def decimal(string, base):
             except:
                 pass
     string = ''.join(calculated).encode('utf-8')
+    
+    print('Decoded decimal as %s' % string)
+    
     if string in decoded:
         Quit()
     print(g + ' Decoded from Decimal : %s' % (string))
